@@ -19,4 +19,3 @@ end
     @balance.withdraw(value)
   end
 end
-#  test this
