@@ -1,11 +1,11 @@
 class Balance
     attr_accessor :funds 
-    def initialize (funds = 0.00)
+    def initialize(funds = 0.00)
         @funds = funds 
     end 
 
     def show_funds 
-        "£%.2f" % @funds
+       formatted_funds = "£%.2f" % @funds
     end
 
     def deposit(value)

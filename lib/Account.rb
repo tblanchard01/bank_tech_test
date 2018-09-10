@@ -1,17 +1,22 @@
 require_relative 'balance'
 
 class Account
+  attr_accessor :balance
+
   def initialize(balance = Balance)
     @balance = balance.new
  end
 
-  def balance
-    @balance.show_funds 
+  def show_balance
+    @balance.show_funds
   end
 
-  def deposit 
-  end 
+  def deposit(value)
+    @balance.deposit(value)
+end
 
-
-end 
-#  test this 
+  def withdraw(value)
+    @balance.withdraw(value)
+  end
+end
+#  test this
