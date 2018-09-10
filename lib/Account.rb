@@ -1,10 +1,17 @@
-class Account 
-    DEFAULT_BALANCE = 0.00 
-   
-    attr_accessor :balance   
+require_relative 'balance'
 
-    def initialize(balance = DEFAULT_BALANCE)
-    @balance = balance  
-    end 
+class Account
+  def initialize(balance = Balance)
+    @balance = balance.new
+ end
+
+  def balance
+    @balance.show_funds 
+  end
+
+  def deposit 
+  end 
+
 
 end 
+#  test this 
