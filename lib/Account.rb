@@ -1,7 +1,7 @@
 require_relative 'balance'
 
 class Account
-  attr_accessor :balance
+  attr_reader :balance
 
   def initialize(balance = Balance)
     @balance = balance.new

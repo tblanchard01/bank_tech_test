@@ -1,5 +1,5 @@
 class Balance
-    attr_accessor :funds 
+    attr_reader :funds 
     def initialize(funds = 0.00)
         @funds = funds 
     end 
@@ -8,6 +8,7 @@ class Balance
        formatted_funds = "£%.2f" % @funds
     end
 
+     
     def deposit(value)
         @funds += value 
     end 
