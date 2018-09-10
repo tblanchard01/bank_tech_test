@@ -7,7 +7,5 @@ describe Account do
   end 
 
 
-it 'checks that a new oyster has a balance of 0' do
-  expect(account.balance).to eq 0
-  end
+  
 end 
