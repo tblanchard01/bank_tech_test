@@ -12,10 +12,10 @@ class Account
   end
 
   def deposit(value)
-    @balance.deposit(value)
+    value > 0 ? @balance.deposit(value) : 'value must be greater than £0.00'
 end
 
   def withdraw(value)
-    @balance.withdraw(value)
+    value > 0 ? @balance.withdraw(value) : 'value must be greater than £0.00'
   end
 end

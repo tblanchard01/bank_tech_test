@@ -7,17 +7,30 @@ describe Account do
   end
 
   it 'has a default balance of £0.00' do
-    expect(account.show_balance).to eq "£0.00"
+    expect(account.show_balance).to eq '£0.00'
   end
 
+  it 'can be deposited into' do
+    expect { account.deposit(10) }.to change { account.balance.funds }.by(10)
+  end
 
+  it 'can be withdrawn from' do
+    expect { account.withdraw(10) }.to change { account.balance.funds }.by(-10)
+  end
+  it 'user cannot deposit £0.00' do
+    expect(account.deposit(0)).to eq('value must be greater than £0.00')
+  end
+  it 'user cannot withdraw £0.00' do
+    expect(account.withdraw(0)).to eq('value must be greater than £0.00')
+  end
 
-it 'can be deposited into' do 
-  expect { account.deposit(10) }.to change { account.balance.funds }.by(10)
-end 
-
-it 'can be withdrawn from' do
-
-  expect { account.withdraw(10) }.to change { account.balance.funds }.by(-10)
-end 
+  it 'user cannot deposit negative values' do
+    expect(account.deposit(-4)).to eq('value must be greater than £0.00')
+    expect(account.balance.funds).to eq(0)
+  end
+  it 'user cannot withdraw £0.00' do
+    account.deposit(10)
+    expect(account.withdraw(-4)).to eq('value must be greater than £0.00')
+    expect(account.balance.funds).to eq(10)
+  end
 end
