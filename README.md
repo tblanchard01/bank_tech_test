@@ -16,7 +16,7 @@
 
 ```
 EXAMPLE:
-
+acc = Account.new 
 acc.deposit(1000, '10-01-2012')
 acc.deposit(2000, '13-01-2012')
 acc.withdraw(500, '14-01-2012')
