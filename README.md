@@ -10,9 +10,9 @@
 
 ## To Interact with the bank: 
 
-1.Create an Account by writing [name_here] = Account.new. 
-2.Each transaction takes an ammount, if date is left blank, today's date is inputted 
-3.Calling 'print_statement' on the Account object will print the statement. 
+1) Create an Account by writing [name_here] = Account.new. 
+2) Each transaction takes an ammount, if date is left blank, today's date is inputted 
+3) Calling 'print_statement' on the Account object will print the statement. 
 
 ```
 EXAMPLE:
