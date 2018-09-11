@@ -3,7 +3,7 @@
 
 # Bank tech test
 
-##User Stories 
+## User Stories 
 
 1) As as a Bank user, 
 so I can review my account activity, 
