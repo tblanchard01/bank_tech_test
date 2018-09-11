@@ -9,7 +9,7 @@ class Account
   def initialize(balance = Balance)
     @balance = balance.new
     @statement = []
- end
+  end
 
   def show_balance
     @balance.show_funds
@@ -18,7 +18,7 @@ class Account
   def deposit(value, date = "14/01/2012")
     if value > 0
       @balance.deposit(value)
-      @statement.push(Transaction.new(date, value, '', @balance))
+      @statement.push(Transaction.new(date, value, '', @balance.funds))
     else
       'value must be greater than £0.00'
   end
@@ -27,9 +27,14 @@ class Account
   def withdraw(value, date = "14/01/2012")
     if value > 0
       @balance.withdraw(value)
-      @statement.push(Transaction.new(date, '', value, @balance))
+      @statement.push(Transaction.new(date, '', value, @balance.funds))
     else
       'value must be greater than £0.00'
     end
   end
+  def print_statement 
+
+
+
+  end 
 end
