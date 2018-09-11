@@ -3,6 +3,34 @@
 
 # Bank tech test
 
+## To run code: 
+
+1. Git clone 
+2. Load lib/account.rb into irb 
+
+## To Interact with the bank: 
+
+1.Create an Account by writing [name_here] = Account.new. 
+2.Each transaction takes an ammount, if date is left blank, today's date is inputted 
+3.Calling 'print_statement' on the Account object will print the statement. 
+
+EXAMPLE:
+
+>acc.deposit(1000, '10-01-2012')
+>acc.deposit(2000, '13-01-2012')
+>acc.withdraw(500, '14-01-2012')
+>acc.print_statement 
+
+Gives: 
+
+>date || credit (£) || debit (£) || balance (£)
+>===============================================
+>14-01-2012 ||  || 500.00 || 2500.00
+>13-01-2012 || 2000.00 ||  || 3000.00
+>10-01-2012 || 1000.00 ||  || 1000.00
+
+
+
 ## User Stories 
 
 1) As as a Bank user, 

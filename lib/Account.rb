@@ -15,7 +15,7 @@ class Account
     @balance.show_funds
   end
 
-  def deposit(value, date = '14/01/2012')
+  def deposit(value, date = Date.today.strftime("%d-%m-%y"))
     return "value must be a number" unless value.is_a? Numeric
    if(value > 0)
       @balance.deposit(value)
@@ -25,7 +25,7 @@ class Account
   end
   end
 
-  def withdraw(value, date = '14/01/2012')
+  def withdraw(value, date = Date.today.strftime("%d-%m-%y"))
    return "value must be a number" unless value.is_a? Numeric
     if(value > 0)
       @balance.withdraw(value)

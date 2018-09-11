@@ -71,7 +71,7 @@ describe Account do
     end
     it 'deposit object is created with the correct properties' do
       account.deposit(10)
-      expect(account.statement[0].date).to eq('14/01/2012')
+      expect(account.statement[0].date).to eq(Date.today.strftime("%d-%m-%y"))
       expect(account.statement[0].credit).to eq('10.00')
       expect(account.statement[0].debit).to eq('')
       expect(account.statement[0].balance).to eq('10.00')
@@ -79,7 +79,7 @@ describe Account do
     it 'withdraw object is created with the correct properties' do
       account.deposit(20)
       account.withdraw(10)
-      expect(account.statement[1].date).to eq('14/01/2012')
+      expect(account.statement[1].date).to eq(Date.today.strftime("%d-%m-%y"))
       expect(account.statement[1].credit).to eq('')
       expect(account.statement[1].debit).to eq('10.00')
       expect(account.statement[1].balance).to eq('10.00')
