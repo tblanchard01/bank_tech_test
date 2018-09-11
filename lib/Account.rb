@@ -16,20 +16,22 @@ class Account
   end
 
   def deposit(value, date = '14/01/2012')
-    if value > 0
+    return "value must be a number" unless value.is_a? Numeric
+   if(value > 0)
       @balance.deposit(value)
       @statement.push(Transaction.new(date, format('%.2f', value), '', format('%.2f', @balance.funds)))
     else
-      'value must be greater than £0.00'
+      'value must be a number greater than £0.00'
   end
   end
 
   def withdraw(value, date = '14/01/2012')
-    if value > 0
+   return "value must be a number" unless value.is_a? Numeric
+    if(value > 0)
       @balance.withdraw(value)
       @statement.push(Transaction.new(date, '', format('%.2f', value), format('%.2f', @balance.funds)))
     else
-      'value must be greater than £0.00'
+      'value must be a number greater than £0.00'
     end
   end
 
