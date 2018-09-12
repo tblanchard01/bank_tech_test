@@ -4,7 +4,7 @@ require_relative 'Transaction'
 require_relative 'Display'
 
 class Account
-  attr_reader :balance, :statement 
+  attr_reader :balance
 
   def initialize(balance = Balance, display = Display)
     @balance = balance.new
@@ -13,7 +13,7 @@ class Account
   end
 
   def show_balance
-    @display.show_balance(@statement)
+    @display.show_balance(@balance)
   end
 
   def deposit(value, date = Date.today.strftime('%d-%m-%y'))
