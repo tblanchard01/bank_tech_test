@@ -4,11 +4,7 @@ class Balance
     @funds = funds
   end
 
-  def show_funds
-    formatted_funds = format('£%.2f', @funds)
-  end
-
-  def deposit(value)
+   def deposit(value)
     @funds += value
   end
 
