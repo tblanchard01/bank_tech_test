@@ -10,7 +10,7 @@ class Account
   def initialize(balance = Balance, display = Display)
     @balance = balance.new
     @statement = []
-    @display = display.new(@statement)
+    @display = display.new
 
   end
 
@@ -41,7 +41,7 @@ class Account
   end
 
   def print_statement
-    @display.printout
+    @display.printout(@statement)
   end
 end
 
