@@ -55,32 +55,31 @@ describe Account do
       expect(account.show_balance).to eq '£30.50'
     end
   end
-  describe 'statement tests' do
-    it 'creating deposit causes object to be added to statment array.' do
-      expect(account.statement.length).to eq(0)
-      account.deposit(10)
-      expect(account.statement.length).to eq(1)
-    end
-    it 'creating withdrawal causes object to be added to statment array.' do
-      expect(account.statement.length).to eq(0)
-      account.withdraw(10)
-      expect(account.statement.length).to eq(1)
-    end
-    it 'deposit object is created with the correct properties' do
-      account.deposit(10)
-      expect(account.statement[0].date).to eq(Date.today.strftime("%d-%m-%y"))
-      expect(account.statement[0].credit).to eq('10.00')
-      expect(account.statement[0].debit).to eq('')
-      expect(account.statement[0].balance).to eq('10.00')
-    end
-    it 'withdraw object is created with the correct properties' do
-      account.deposit(20)
-      account.withdraw(10)
-      expect(account.statement[1].date).to eq(Date.today.strftime("%d-%m-%y"))
-      expect(account.statement[1].credit).to eq('')
-      expect(account.statement[1].debit).to eq('10.00')
-      expect(account.statement[1].balance).to eq('10.00')
-    end
-
- end
+  # describe 'statement tests' do
+  #   it 'creating deposit causes object to be added to statment array.' do
+  #     expect(account.statement.length).to eq(0)
+  #     account.deposit(10)
+  #     expect(account.statement.length).to eq(1)
+  #   end
+  #   it 'creating withdrawal causes object to be added to statment array.' do
+  #     expect(account.statement.length).to eq(0)
+  #     account.withdraw(10)
+  #     expect(account.statement.length).to eq(1)
+  #   end
+  #   it 'deposit object is created with the correct properties' do
+  #     account.deposit(10)
+  #     expect(account.statement[0].date).to eq(Date.today.strftime("%d-%m-%y"))
+  #     expect(account.statement[0].credit).to eq('10.00')
+  #     expect(account.statement[0].debit).to eq('')
+  #     expect(account.statement[0].balance).to eq('10.00')
+  #   end
+  #   it 'withdraw object is created with the correct properties' do
+  #     account.deposit(20)
+  #     account.withdraw(10)
+  #     expect(account.statement[1].date).to eq(Date.today.strftime("%d-%m-%y"))
+  #     expect(account.statement[1].credit).to eq('')
+  #     expect(account.statement[1].debit).to eq('10.00')
+  #     expect(account.statement[1].balance).to eq('10.00')
+  #   end
+  # end
 end

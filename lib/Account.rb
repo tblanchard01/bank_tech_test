@@ -1,33 +1,38 @@
 require 'date'
-require_relative 'balance'
+require_relative 'Balance'
 require_relative 'Transaction'
+require_relative 'Display'
 
 class Account
   attr_reader :balance
-  attr_reader :statement
+   attr_reader :statement
 
-  def initialize(balance = Balance)
+  def initialize(balance = Balance, display = Display)
     @balance = balance.new
     @statement = []
+    @display = display.new(@statement)
+
   end
 
   def show_balance
     @balance.show_funds
   end
 
-  def deposit(value, date = Date.today.strftime("%d-%m-%y"))
-    return "value must be a number" unless value.is_a? Numeric
-   if(value > 0)
+  def deposit(value, date = Date.today.strftime('%d-%m-%y'))
+    return 'value must be a number' unless value.is_a? Numeric
+
+    if value > 0
       @balance.deposit(value)
       @statement.push(Transaction.new(date, format('%.2f', value), '', format('%.2f', @balance.funds)))
     else
       'value must be a number greater than £0.00'
-  end
+   end
   end
 
-  def withdraw(value, date = Date.today.strftime("%d-%m-%y"))
-   return "value must be a number" unless value.is_a? Numeric
-    if(value > 0)
+  def withdraw(value, date = Date.today.strftime('%d-%m-%y'))
+    return 'value must be a number' unless value.is_a? Numeric
+
+    if value > 0
       @balance.withdraw(value)
       @statement.push(Transaction.new(date, '', format('%.2f', value), format('%.2f', @balance.funds)))
     else
@@ -36,9 +41,7 @@ class Account
   end
 
   def print_statement
-    puts 'date' + ' || ' + 'credit (£)' + ' || ' + 'debit (£)' + ' || ' + 'balance (£) '
-    puts '==============================================='
-    @statement.reverse_each { |row| puts row.date.to_s + ' || ' + row.credit.to_s + ' || ' + row.debit.to_s + ' || ' + row.balance.to_s }
+    @display.printout
   end
 end
 
