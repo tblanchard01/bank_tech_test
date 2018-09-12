@@ -4,4 +4,8 @@ class Display
     puts '==============================================='
     statement.reverse_each { |row| puts row.date.to_s + ' || ' + row.credit.to_s + ' || ' + row.debit.to_s + ' || ' + row.balance.to_s }
   end
-end 
+
+  def show_balance(statement)
+    "£#{statement.last.balance}"
+      end
+end

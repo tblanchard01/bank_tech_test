@@ -4,7 +4,7 @@ describe Account do
   let(:account) { described_class.new }
  
   it 'has a default balance of £0.00' do
-    expect(account.show_balance).to eq '£0.00'
+    expect(account.balance.funds).to eq(0.0)
   end
   describe 'despositing and withdrawal tests' do
     it 'can be deposited into' do

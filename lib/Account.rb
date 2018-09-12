@@ -5,17 +5,16 @@ require_relative 'Display'
 
 class Account
   attr_reader :balance
-   attr_reader :statement
+  attr_reader :statement
 
   def initialize(balance = Balance, display = Display)
     @balance = balance.new
     @statement = []
     @display = display.new
-
   end
 
   def show_balance
-    @balance.show_funds
+    @display.show_balance(@statement)
   end
 
   def deposit(value, date = Date.today.strftime('%d-%m-%y'))
@@ -50,3 +49,4 @@ acc.deposit(1000, '10-01-2012')
 acc.deposit(2000, '13-01-2012')
 acc.withdraw(500, '14-01-2012')
 acc.print_statement
+acc.show_balance
