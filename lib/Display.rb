@@ -9,3 +9,4 @@ class Display
     "£#{statement.last.balance}"
       end
 end
+

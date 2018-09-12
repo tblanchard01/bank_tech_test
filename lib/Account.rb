@@ -4,8 +4,7 @@ require_relative 'Transaction'
 require_relative 'Display'
 
 class Account
-  attr_reader :balance
-  attr_reader :statement
+  attr_reader :balance, :statement 
 
   def initialize(balance = Balance, display = Display)
     @balance = balance.new

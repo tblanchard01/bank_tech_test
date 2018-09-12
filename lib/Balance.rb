@@ -4,9 +4,9 @@ class Balance
     @funds = funds
   end
 
-   def deposit(value)
+  def deposit(value)
     @funds += value
-  end
+ end
 
   def withdraw(value)
     @funds -= value
