@@ -6,7 +6,7 @@ class Display
   end
 
   def show_balance(statement)
-    "£#{statement.last.balance}"
+    "£#{format('%.2f',statement.last.balance)}"
       end
 end
 
