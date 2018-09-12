@@ -17,4 +17,13 @@ describe 'Features' do
     account.withdraw(5.02)
     expect(account.show_balance).to eq('£5.40')
   end
+  
+
+    it 'prints sample statement correctly as per instructions' do
+          account = Account.new
+          account.deposit()
+
+        expect{display.printout(statement)}.to output("date || credit (£) || debit (£) || balance (£) \n===============================================\n10-01-12 || 20.0 ||  || 50.0\n10-01-12 || 10.0 ||  || 30.0\n").to_stdout 
+     end
+
 end
