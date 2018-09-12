@@ -2,10 +2,7 @@ require 'Account'
 
 describe Account do
   let(:account) { described_class.new }
-  it 'new accounts can be created' do
-    expect(account).to be_instance_of Account
-  end
-
+ 
   it 'has a default balance of £0.00' do
     expect(account.show_balance).to eq '£0.00'
   end
@@ -84,15 +81,6 @@ describe Account do
       expect(account.statement[1].debit).to eq('10.00')
       expect(account.statement[1].balance).to eq('10.00')
     end
-     it 'prints sample statement correctly as per instructions' do
-      account.deposit(1000, '10-01-2012')
-      account.deposit(2000, '13-01-2012')
-      account.withdraw(500, '14-01-2012')
-      expect{account.print_statement}.to output("date || credit (£) || debit (£) || balance (£)
-===============================================
-14-01-2012 ||  || 500.00 || 2500.00
-13-01-2012 || 2000.00 ||  || 3000.00
-10-01-2012 || 1000.00 ||  || 1000.00").to_stdout 
-     end
-  end
+
+ end
 end
