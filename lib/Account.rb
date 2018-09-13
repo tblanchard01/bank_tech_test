@@ -19,7 +19,7 @@ class Account
     return 'value must be a number' unless value.is_a? Numeric
     if value > 0
       @balance += value
-      @statement.push(Transaction.new(date, format('%.2f', value), '', format('%.2f', @balance)))
+      @statement.push(Transaction.new(date, value, '', @balance))
     else
       'value must be a number greater than £0.00'
    end
@@ -30,7 +30,7 @@ class Account
 
     if value > 0
       @balance -= value
-      @statement.push(Transaction.new(date, '', format('%.2f', value), format('%.2f', @balance)))
+      @statement.push(Transaction.new(date, '', value, @balance))
     else
       'value must be a number greater than £0.00'
     end
@@ -41,9 +41,8 @@ class Account
   end
 end
 
-# acc = Account.new
-# acc.deposit(1000, '10-01-2012')
-# acc.deposit(2000, '13-01-2012')
-# acc.withdraw(500, '14-01-2012')
-# acc.print_statement
-# acc.show_balance
+acc = Account.new
+acc.deposit(1000, '10-01-2012')
+acc.deposit(2000, '13-01-2012')
+acc.withdraw(500, '14-01-2012')
+acc.print_statement
