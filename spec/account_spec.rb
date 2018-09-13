@@ -2,7 +2,7 @@ require 'Account'
 
 describe Account do
   let(:account) { described_class.new }
- 
+
   it 'has a default balance of £0.00' do
     expect(account.balance.funds).to eq(0.0)
   end
@@ -15,37 +15,33 @@ describe Account do
       expect { account.withdraw(10) }.to change { account.balance.funds }.by(-10)
     end
 
-    describe 'error handling' do 
+    describe 'error handling' do
+      it 'user can not deposit non-numeric values' do
+        expect(account.deposit('a string')).to eq('value must be a number')
+      end
 
-      it 'user can not deposit non-numeric values' do 
-        expect(account.deposit("a string")).to eq('value must be a number')
-      end 
-
-      it 'user can not withdraw non-numeric values' do 
+      it 'user can not withdraw non-numeric values' do
         account.deposit(10)
-        expect(account.withdraw("a string")).to eq('value must be a number')
-      end 
+        expect(account.withdraw('a string')).to eq('value must be a number')
+      end
 
+      it 'user cannot deposit £0.00' do
+        expect(account.deposit(0)).to eq('value must be a number greater than £0.00')
+      end
+      it 'user cannot withdraw £0.00' do
+        expect(account.withdraw(0)).to eq('value must be a number greater than £0.00')
+      end
 
-    it 'user cannot deposit £0.00' do
-      expect(account.deposit(0)).to eq('value must be a number greater than £0.00')
+      it 'user cannot deposit negative values' do
+        expect(account.deposit(-4)).to eq('value must be a number greater than £0.00')
+        expect(account.balance.funds).to eq(0)
+      end
+      it 'user cannot withdraw negative values' do
+        account.deposit(10)
+        expect(account.withdraw(-4)).to eq('value must be a number greater than £0.00')
+        expect(account.balance.funds).to eq(10)
+      end
     end
-    it 'user cannot withdraw £0.00' do
-      expect(account.withdraw(0)).to eq('value must be a number greater than £0.00')
-    end
-
-
-
-    it 'user cannot deposit negative values' do
-      expect(account.deposit(-4)).to eq('value must be a number greater than £0.00')
-      expect(account.balance.funds).to eq(0)
-    end
-    it 'user cannot withdraw negative values' do
-      account.deposit(10)
-      expect(account.withdraw(-4)).to eq('value must be a number greater than £0.00')
-      expect(account.balance.funds).to eq(10)
-    end
-  end 
 
     it 'calculates balance of multiple transactions correctly' do
       account.deposit(10.50)

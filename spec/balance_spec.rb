@@ -2,7 +2,7 @@ require 'Balance'
 
 describe Balance do
   let(:balance) { described_class.new }
-    
+
   it 'has funds of of 0 on creation' do
     expect(balance.funds).to eq 0.0
   end

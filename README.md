@@ -5,8 +5,13 @@
 
 ## To run code: 
 
-1. Git clone 
-2. Load lib/account.rb into irb 
+1. Clone the Repo from Github.
+2. Make sure you have Ruby installed. 
+3. Open the folder of the cloned Repo in your terminal.
+4. Type 'irb' into the terminal.
+5. Type require './lib/account'.
+6. If the file has loaded sucsessfully, you will be greeted wtih "=>true"
+
 
 ## To Interact with the bank: 
 

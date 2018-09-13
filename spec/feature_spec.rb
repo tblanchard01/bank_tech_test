@@ -17,16 +17,12 @@ describe 'Features' do
     account.withdraw(5.02)
     expect(account.show_balance).to eq('£5.40')
   end
-  
 
-    it 'prints sample statement correctly as per instructions' do
-        allow(Date).to receive(:today).and_return Date.new(2012,01,12)
-        account = Account.new
-          account.deposit(50)
-          account.withdraw(30)
-
-
-        expect{account.print_statement}.to output("date || credit (£) || debit (£) || balance (£) \n===============================================\n12-01-12 ||  || 30.00 || 20.00\n12-01-12 || 50.00 ||  || 50.00\n").to_stdout 
-     end
-
+  it 'prints sample statement correctly as per instructions' do
+    allow(Date).to receive(:today).and_return Date.new(2012, 0o1, 12)
+    account = Account.new
+    account.deposit(50)
+    account.withdraw(30)
+    expect { account.print_statement }.to output("date || credit (£) || debit (£) || balance (£) \n===============================================\n12-01-12 ||  || 30.00 || 20.00\n12-01-12 || 50.00 ||  || 50.00\n").to_stdout
+  end
 end
