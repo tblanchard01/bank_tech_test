@@ -1,18 +1,20 @@
 require 'Account'
 
 describe Account do
-  let(:account) { described_class.new }
+  let(:display) { double :display, :show_balance => "£0.00"  }
+  let(:account) { described_class.new(0.00, display) }
 
   it 'has a default balance of £0.00' do
-    expect(account.balance.funds).to eq(0.0)
+    p account.display 
+    expect(account.show_balance).to eq('£0.00')
   end
   describe 'despositing and withdrawal tests' do
     it 'can be deposited into' do
-      expect { account.deposit(10) }.to change { account.balance.funds }.by(10)
+      expect { account.deposit(10) }.to change { account.balance }.by(10)
     end
 
     it 'can be withdrawn from' do
-      expect { account.withdraw(10) }.to change { account.balance.funds }.by(-10)
+      expect { account.withdraw(10) }.to change { account.balance }.by(-10)
     end
 
     describe 'error handling' do
@@ -34,12 +36,12 @@ describe Account do
 
       it 'user cannot deposit negative values' do
         expect(account.deposit(-4)).to eq('value must be a number greater than £0.00')
-        expect(account.balance.funds).to eq(0)
+        expect(account.balance).to eq(0)
       end
       it 'user cannot withdraw negative values' do
         account.deposit(10)
         expect(account.withdraw(-4)).to eq('value must be a number greater than £0.00')
-        expect(account.balance.funds).to eq(10)
+        expect(account.balance).to eq(10)
       end
     end
 
@@ -47,8 +49,7 @@ describe Account do
       account.deposit(10.50)
       account.deposit(50.25)
       account.withdraw(30.25)
-      expect(account.balance.funds).to eq(30.50)
-      expect(account.show_balance).to eq '£30.50'
+      expect(account.balance).to eq(30.50)
     end
   end
   # describe 'statement tests' do
